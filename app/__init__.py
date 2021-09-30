@@ -13,7 +13,7 @@ session = Session()
 def create_app():
     """setup config"""
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'dungnt1200'
+    app.config['SECRET_KEY'] = 'dungnt2200'
     app.config[
         'APP_DB_URI'] = 'mongodb+srv://dungnt196:25Tuananh08@1stcluster17032020.dabsg.azure.mongodb.net/test?retryWrites=true&w=majority'
     app.config['APP_NS'] = 'snake_bot'
