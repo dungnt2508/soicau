@@ -1,0 +1,370 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+	<div class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6">
+					<!--            <h1 class="m-0 text-dark">{% if g.user %} Xin chào, {{g.user['name']}} {% endif %}</h1>-->
+				</div><!-- /.col -->
+				<div class="col-sm-6">
+					<ol class="breadcrumb float-sm-right">
+						<!--              <li class="breadcrumb-item"><a href="#">Home</a></li>-->
+					</ol>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
+	</div>
+	<!-- /.content-header -->
+
+	<!-- Main content -->
+	<div class="row">
+		<!-- Left col -->
+		<section class="col-lg-5 connectedSortable">
+
+			<!-- DIRECT CHAT -->
+			<div class="card direct-chat direct-chat-primary">
+				<div class="card-header">
+					<h3 class="card-title"></h3>
+
+					<div class="card-tools">
+						<span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>
+						<button type="button" class="btn btn-tool" data-card-widget="collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+						<button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts"
+						        data-widget="chat-pane-toggle">
+							<i class="fas fa-comments"></i>
+						</button>
+						<button type="button" class="btn btn-tool" data-card-widget="remove"><i
+								class="fas fa-times"></i>
+						</button>
+					</div>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+					<!-- Conversations are loaded here -->
+					<div class="direct-chat-messages" id="direct_chat_messages">
+						<!-- /.direct-chat-msg -->
+						<div class="direct-chat-msg">
+							<div class="direct-chat-infos clearfix">
+								<span class="direct-chat-name float-left">Snake</span>
+								<span class="direct-chat-timestamp float-right">time</span>
+							</div>
+							<!-- /.direct-chat-infos -->
+							<img class="direct-chat-img" src="static/dist/img/user1-128x128.jpg"
+							     alt="message user image">
+							<!-- /.direct-chat-img -->
+							<div class="direct-chat-text" id="messages_bot"></div>
+							<!-- /.direct-chat-text -->
+						</div>
+
+						<!--						&lt;!&ndash; Message to the right &ndash;&gt;-->
+						<!--						<div class="direct-chat-msg right">-->
+						<!--							<div class="direct-chat-infos clearfix">-->
+						<!--								<span class="direct-chat-name float-right">You</span>-->
+						<!--								<span class="direct-chat-timestamp float-left">10:02</span>-->
+						<!--							</div>-->
+						<!--							&lt;!&ndash;							 /.direct-chat-infos&ndash;&gt;-->
+						<!--							<img class="direct-chat-img" src="static/dist/img/user3-128x128.jpg"-->
+						<!--							     alt="message user image">-->
+						<!--							&lt;!&ndash;							 /.direct-chat-img&ndash;&gt;-->
+						<!--							<div class="direct-chat-text" id="messages">-->
+
+						<!--							</div>-->
+						<!--							&lt;!&ndash; /.direct-chat-text &ndash;&gt;-->
+						<!--						</div>&lt;!&ndash; Message to the right &ndash;&gt;-->
+						<!--						<div class="direct-chat-msg right">-->
+						<!--							<div class="direct-chat-infos clearfix">-->
+						<!--								<span class="direct-chat-name float-right">You</span>-->
+						<!--								<span class="direct-chat-timestamp float-left">10:02</span>-->
+						<!--							</div>-->
+						<!--							&lt;!&ndash;							 /.direct-chat-infos&ndash;&gt;-->
+						<!--							<img class="direct-chat-img" src="static/dist/img/user3-128x128.jpg"-->
+						<!--							     alt="message user image">-->
+						<!--							&lt;!&ndash;							 /.direct-chat-img&ndash;&gt;-->
+						<!--							<div class="direct-chat-text" id="messages">-->
+
+						<!--							</div>-->
+						<!--							&lt;!&ndash; /.direct-chat-text &ndash;&gt;-->
+						<!--						</div>-->
+
+					</div>
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer">
+					<form id="f_message_input">
+						<div class="input-group">
+							<input type="text" name="message_input" id="message_input" placeholder="Nhập..."
+							       class="form-control">
+							<span class="input-group-append">
+                      <button type="submit" class="btn btn-primary">Enter</button>
+                    </span>
+						</div>
+					</form>
+				</div>
+				<!-- /.card-footer-->
+			</div>
+			<div class="card-footer">
+			</div>
+
+		</section>
+		<!-- /.Left col -->
+		<!-- right col (We are only adding the ID to make the widgets sortable)-->
+		<section class="col-lg-7 connectedSortable">
+			<div class="card direct-chat direct-chat-primary" id="dashboard_baucua" style="display: none">
+				<div class="card-header">
+					<h3 class="card-title">Soi Bầu Cua</h3>
+
+					<div class="card-tools">
+						<!--                  <span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>-->
+						<button type="button" class="btn btn-tool" data-card-widget="collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+					<!-- Conversations are loaded here -->
+					<div class="direct-chat-messages">
+						<!-- /.direct-chat-msg -->
+						<div>Phiên gần nhất :</div>
+
+					</div>
+				</div>
+				<!-- /.card-body -->
+
+			</div>
+			<div class="card direct-chat direct-chat-primary" id="dashboard_taixiumd5" style="display: none">
+				<div class="card-header">
+					<h3 class="card-title">Soi Tài Xỉu MD5</h3>
+
+					<div class="card-tools">
+						<!--                  <span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>-->
+						<button type="button" class="btn btn-tool" data-card-widget="collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+					<!-- Conversations are loaded here -->
+					<div class="direct-chat-messages">
+						<!-- /.direct-chat-msg -->
+						<form name="predict_taixiumd5">
+							<div class="form-group row">
+								<label for="sicbomd5_phien" class="col-sm-2 col-form-label">Phiên gần nhất :</label>
+								<div class="col-sm-4">
+									<input type="text" name="name" class="form-control" id="sicbomd5_phien"
+									       readonly="true">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="sicbomd5_xx123" class="col-sm-2 col-form-label">Kết quả :</label>
+								<div class="col-sm-2">
+									<input type="text" name="name" class="form-control" id="sicbomd5_xx123"
+									       readonly="true">
+								</div>
+								<div class="col-sm-1">
+									<input type="text" name="name" class="form-control" id="sicbomd5_rs_number"
+									       readonly="true">
+								</div>
+								<div class="col-sm-1">
+									<input type="text" name="name" class="form-control" id="sicbomd5_rs_str"
+									       readonly="true">
+								</div>
+
+							</div>
+							<div class="form-group row">
+								<label for="sicbomd5_phien" class="col-sm-6 col-form-label">Phân tích cầu của 100 phiên
+									gần nhất :</label>
+							</div>
+							<div class="form-group row">
+								<div class="col-sm-4">
+									<input type="text" name="name" class="form-control" id="taixiumd5_phantich"
+									       readonly="true">
+								</div>
+							</div>
+
+						</form>
+
+
+					</div>
+
+					<div class="tick" data-value="1" data-did-init="get_last_phien">
+						<div data-repeat="true" aria-hidden="true">
+						</div>
+
+					</div>
+				</div>
+				<!-- /.card-body -->
+
+			</div>
+		</section>
+		<!-- right col -->
+	</div>
+
+	<!-- /.content -->
+
+</div>
+<!-- /.content-wrapper -->
+<script src="https://cdn.socket.io/3.1.3/socket.io.min.js"
+        integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh"
+        crossorigin="anonymous"></script>
+<script>
+		const socket = io.connect("http://localhost:5000");
+
+		socket.on('connect', function(){
+			socket.emit('join_room', {username:'{{ current_user.fullname }}', room:'{{ current_user.email }}'});
+
+			let message_input = document.getElementById('message_input');
+			let direct_chat_messages = document.getElementById('direct_chat_messages');
+
+
+			document.getElementById('f_message_input').onsubmit = function(e){
+				e.preventDefault();
+				direct_chat_messages.scrollTo(0,direct_chat_messages.scrollHeight); //scrolls the height of the direct_chat_messages
+				let message = message_input.value.trim();
+				socket.emit('send_message', {
+											username:'{{ current_user.fullname }}',
+											room:'{{ current_user.email }}',
+											message: message
+											});
+
+				message_input.value = '';
+
+				message_input.focus();
+
+			}
+		});
+
+		socket.on('join_room_announcement', function(data){
+			console.log(data)
+			const newNode = document.createElement('div');
+			newNode.innerHTML = `Xin chào ${data.username}, tôi là SnakeBot . Tôi có thể giúp gì cho bạn ? `
+			document.getElementById('messages_bot').appendChild(newNode);
+
+			const item_soibaucua = document.createElement('div');
+			item_soibaucua.setAttribute("id", "item_soibaucua");
+			item_soibaucua.innerHTML = 'Soi Bầu Cua'
+			item_soibaucua.onclick = function(){
+	            document.getElementById("dashboard_baucua").style.display = 'block';
+				document.getElementById("dashboard_taixiumd5").style.display = 'none';
+			};
+
+			const item_soitaixiumd5 = document.createElement('div');
+			item_soitaixiumd5.setAttribute("id", "item_soitaixiumd5");
+			item_soitaixiumd5.innerHTML = 'Soi Tài Xỉu'
+			item_soitaixiumd5.onclick = function(){
+	            document.getElementById("dashboard_baucua").style.display = 'none';
+				document.getElementById("dashboard_taixiumd5").style.display = 'block';
+			};
+			document.getElementById('messages_bot').appendChild(item_soibaucua);
+			document.getElementById('messages_bot').appendChild(item_soitaixiumd5);
+		});
+
+		socket.on('receive_message', function(data){
+			console.log(data)
+<!--			message user type-->
+			const direct_chat_msg_user = document.createElement('div');
+			direct_chat_msg_user.className = 'direct-chat-msg right'
+
+			const direct_chat_infos_clearfix = document.createElement('div');
+			direct_chat_infos_clearfix.className = 'direct-chat-infos clearfix'
+
+			const direct_chat_name_float_right = document.createElement('span');
+			direct_chat_name_float_right.className = 'direct-chat-name float-right'
+
+			const direct_chat_timestamp_float_left = document.createElement('span');
+			direct_chat_timestamp_float_left.className = 'direct-chat-timestamp float-left'
+
+			const direct_chat_img = document.createElement('img');
+			direct_chat_img.className = 'direct-chat-img'
+
+			const direct_chat_text = document.createElement('div');
+			direct_chat_text.className = 'direct-chat-text'
+
+			direct_chat_name_float_right.innerHTML = `Hello`;
+			direct_chat_timestamp_float_left.innerHTML = `Time`;
+			direct_chat_img.src = 'static/dist/img/user1-128x128.jpg'
+			direct_chat_text.innerHTML = `&nbsp; ${data.message}`;
+
+			direct_chat_infos_clearfix.appendChild(direct_chat_name_float_right);
+			direct_chat_infos_clearfix.appendChild(direct_chat_timestamp_float_left);
+
+			direct_chat_msg_user.appendChild(direct_chat_infos_clearfix);
+			direct_chat_msg_user.appendChild(direct_chat_img);
+			direct_chat_msg_user.appendChild(direct_chat_text);
+
+			document.getElementById('direct_chat_messages').appendChild(direct_chat_msg_user);
+
+<!--			message bot type-->
+			const direct_chat_msg_bot = document.createElement('div');
+			direct_chat_msg_bot.className = 'direct-chat-msg left'
+
+			const direct_chat_infos_clearfix_bot = document.createElement('div');
+			direct_chat_infos_clearfix_bot.className = 'direct-chat-infos clearfix'
+
+			const direct_chat_name_float_left = document.createElement('span');
+			direct_chat_name_float_left.className = 'direct-chat-name float-left'
+
+			const direct_chat_timestamp_float_right = document.createElement('span');
+			direct_chat_timestamp_float_right.className = 'direct-chat-timestamp float-right'
+
+			const direct_chat_img_bot = document.createElement('img');
+			direct_chat_img_bot.className = 'direct-chat-img'
+
+			const direct_chat_text_bot = document.createElement('div');
+			direct_chat_text_bot.className = 'direct-chat-text'
+
+			direct_chat_name_float_left.innerHTML = `Snake`;
+			direct_chat_timestamp_float_right.innerHTML = `Time`;
+			direct_chat_img_bot.src = 'static/dist/img/user3-128x128.jpg'
+			direct_chat_text_bot.innerHTML = `${data.reply}`;
+
+			direct_chat_infos_clearfix_bot.appendChild(direct_chat_name_float_left);
+			direct_chat_infos_clearfix_bot.appendChild(direct_chat_timestamp_float_right);
+
+			direct_chat_msg_bot.appendChild(direct_chat_infos_clearfix_bot);
+			direct_chat_msg_bot.appendChild(direct_chat_img_bot);
+			direct_chat_msg_bot.appendChild(direct_chat_text_bot);
+
+			document.getElementById('direct_chat_messages').appendChild(direct_chat_msg_bot);
+			document.getElementById('direct_chat_messages').scrollTo(0,direct_chat_messages.scrollHeight); //scrolls the height of the direct_chat_messages
+
+
+		});
+
+</script>
+
+<script>
+
+    function get_last_phien(tick) {
+
+
+	    Tick.helper.interval(function() {
+
+	        $.ajax({
+			        url: "/sicbomd5/predict",
+			        type: "GET",
+			        dataType: "json",
+			        success: function(resp){
+			            console.log(resp)
+			            document.getElementById('sicbomd5_phien').value = resp.id_phien
+			            document.getElementById('sicbomd5_xx123').value = resp.xx1
+			            document.getElementById('sicbomd5_rs_number').value = resp.rs_number
+			            document.getElementById('sicbomd5_rs_str').value = resp.rs_str
+			        },
+			        error: function(resp){
+			            console.log(resp)
+			        }
+			})
+
+	    }, 10000);
+
+
+	}
+
+
+</script>
+<script src="/static/dist/css/flip.min.js"></script>

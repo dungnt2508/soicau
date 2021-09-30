@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Snake-Bot | Đăng nhập</title>
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/static/plugins/fontawesome-free/css/all.min.css">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- icheck bootstrap -->
+	<link rel="stylesheet" href="/static/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="/static/dist/css/adminlte.min.css">
+	<!-- Google Font: Source Sans Pro -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+	<div class="login-logo">
+		<a href="{{ url_for('bp.login') }}"><b>SNAKE-BOT</b></a>
+	</div>
+	<!-- /.login-logo -->
+	<div class="card">
+		<div class="card-body login-card-body">
+
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			<p class="login-box-msg">
+				{{ messages[0] }}
+			</p>
+			{% else %}
+			<p class="login-box-msg">
+				Hãy đăng nhập để tương tác với tôi
+			</p>
+			{% endif %}
+			{% endwith %}
+
+
+			<form action="/login" method="post">
+				<div class="input-group mb-3">
+					<input type="email" class="form-control" name="email" placeholder="Địa chỉ email">
+					<div class="input-group-append">
+						<div class="input-group-text">
+							<span class="fas fa-envelope"></span>
+						</div>
+					</div>
+				</div>
+				<div class="input-group mb-3">
+					<input type="password" class="form-control" name="password" placeholder="Mật khẩu">
+					<div class="input-group-append">
+						<div class="input-group-text">
+							<span class="fas fa-lock"></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-6">
+						<div class="icheck-primary">
+							<input type="checkbox" id="remember" name="remember">
+							<label for="remember">
+								Nhớ tài khoản
+							</label>
+						</div>
+					</div>
+					<!-- /.col -->
+					<div class="col-6">
+						<button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
+					</div>
+					<!-- /.col -->
+				</div>
+			</form>
+
+			<div class="social-auth-links text-center mb-3">
+				<p>- OR -</p>
+				<a href="#" class="btn btn-block btn-primary">
+					<i class="fab fa-facebook mr-2"></i> Đăng nhập bằng tài khoản Facebook
+				</a>
+				<a href="{{ url_for('bp.login_google')}}" class="btn btn-block btn-danger">
+					<i class="fab fa-google-plus mr-2"></i> Đăng nhập bằng tài khoản Google+
+				</a>
+			</div>
+			<!-- /.social-auth-links -->
+
+			<p class="mb-1">
+				<a href="#">Quên mật khẩu ?</a>
+			</p>
+			<p class="mb-0">
+				<a href="{{ url_for('bp.signup') }}" class="text-center">Đăng ký thành viên mới ?</a>
+			</p>
+		</div>
+		<!-- /.login-card-body -->
+	</div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="/static/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/static/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/dist/js/adminlte.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+	<!-- Content Header (Page header) -->
+	<div class="content-header">
+		<div class="container-fluid">
+			<div class="row mb-2">
+				<div class="col-sm-6">
+					<!--            <h1 class="m-0 text-dark">{% if g.user %} Xin chào, {{g.user['name']}} {% endif %}</h1>-->
+				</div><!-- /.col -->
+				<div class="col-sm-6">
+					<ol class="breadcrumb float-sm-right">
+						<!--              <li class="breadcrumb-item"><a href="#">Home</a></li>-->
+					</ol>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.container-fluid -->
+	</div>
+	<!-- /.content-header -->
+
+	<!-- Main content -->
+	<div class="row">
+		<!-- Left col -->
+		<section class="col-lg-8 connectedSortable">
+			<div class="card direct-chat direct-chat-primary" id="dashboard_taixiumd5">
+				<div class="card-header">
+					<h3 class="card-title">Soi SicboMD5</h3>
+
+					<div class="card-tools">
+						<!--                  <span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>-->
+						<button type="button" class="btn btn-tool" data-card-widget="collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+					</div>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+					<!-- Conversations are loaded here -->
+					<div class="direct-chat-messages">
+						<!-- /.direct-chat-msg -->
+						<form name="predict_taixiumd5">
+							<div class="form-group row">
+								<label for="sicbomd5_phien" class="col-sm-2 col-form-label">Phiên gần nhất :</label>
+								<div class="col-sm-2">
+									<input type="text" name="name" class="form-control" id="sicbomd5_phien"
+									       readonly="true">
+								</div>
+								<label for="sicbomd5_xx123" class="col-sm-2 col-form-label">Kết quả :</label>
+								<div class="col-sm-2">
+									<input type="text" name="name" class="form-control" id="sicbomd5_xx123"
+									       readonly="true">
+								</div>
+								<div class="col-sm-1">
+									<input type="text" name="name" class="form-control" id="sicbomd5_rs_number"
+									       readonly="true">
+								</div>
+								<div class="col-sm-1">
+									<input type="text" name="name" class="form-control" id="sicbomd5_rs_str"
+									       readonly="true">
+								</div>
+
+							</div>
+
+							<div class="row">
+								<div class="col-12">
+									<!-- interactive chart -->
+									<div class="card card-primary card-outline">
+										<div class="card-header">
+											<h3 class="card-title">
+												<i class="far fa-chart-bar"></i>
+												Thống kê 50 cầu gần nhất
+											</h3>
+
+											<div class="card-tools">
+												Real time
+												<div class="btn-group" id="realtime" data-toggle="btn-toggle">
+													<button type="button" class="btn btn-default btn-sm active"
+													        data-toggle="on">On
+													</button>
+													<button type="button" class="btn btn-default btn-sm"
+													        data-toggle="off">Off
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="card-body">
+											<div id="interactive" style="height: 300px;"></div>
+										</div>
+										<!-- /.card-body-->
+
+									</div>
+									<!-- /.card -->
+								</div>
+								<!-- /.col -->
+							</div>
+
+						</form>
+						<div class="card-footer">
+							<span class="input-group-append">
+                                <button type="submit" class="btn btn-primary">Dự đoán</button>
+                            </span>
+						</div>
+
+					</div>
+
+					<div class="tick" data-value="1" data-did-init="get_last_phien">
+						<div data-repeat="true" aria-hidden="true">
+						</div>
+
+					</div>
+				</div>
+				<!-- /.card-body -->
+
+			</div>
+
+
+		</section>
+		<!-- /.Left col -->
+		<!-- right col (We are only adding the ID to make the widgets sortable)-->
+		<section class="col-lg-4 connectedSortable">
+
+			<!-- DIRECT CHAT -->
+			<div class="card direct-chat direct-chat-primary">
+				<div class="card-header">
+					<h3 class="card-title"></h3>
+
+					<div class="card-tools">
+						<span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>
+						<button type="button" class="btn btn-tool" data-card-widget="collapse">
+							<i class="fas fa-minus"></i>
+						</button>
+						<button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts"
+						        data-widget="chat-pane-toggle">
+							<i class="fas fa-comments"></i>
+						</button>
+						<button type="button" class="btn btn-tool" data-card-widget="remove"><i
+								class="fas fa-times"></i>
+						</button>
+					</div>
+				</div>
+				<!-- /.card-header -->
+				<div class="card-body">
+					<!-- Conversations are loaded here -->
+					<div class="direct-chat-messages" id="direct_chat_messages">
+						<!-- /.direct-chat-msg -->
+						<div class="direct-chat-msg">
+							<div class="direct-chat-infos clearfix">
+								<span class="direct-chat-name float-left">Snake</span>
+								<span class="direct-chat-timestamp float-right">time</span>
+							</div>
+							<!-- /.direct-chat-infos -->
+							<img class="direct-chat-img" src="static/dist/img/user1-128x128.jpg"
+							     alt="message user image">
+							<!-- /.direct-chat-img -->
+							<div class="direct-chat-text" id="messages_bot"></div>
+							<!-- /.direct-chat-text -->
+						</div>
+
+						<!--						&lt;!&ndash; Message to the right &ndash;&gt;-->
+						<!--						<div class="direct-chat-msg right">-->
+						<!--							<div class="direct-chat-infos clearfix">-->
+						<!--								<span class="direct-chat-name float-right">You</span>-->
+						<!--								<span class="direct-chat-timestamp float-left">10:02</span>-->
+						<!--							</div>-->
+						<!--							&lt;!&ndash;							 /.direct-chat-infos&ndash;&gt;-->
+						<!--							<img class="direct-chat-img" src="static/dist/img/user3-128x128.jpg"-->
+						<!--							     alt="message user image">-->
+						<!--							&lt;!&ndash;							 /.direct-chat-img&ndash;&gt;-->
+						<!--							<div class="direct-chat-text" id="messages">-->
+
+						<!--							</div>-->
+						<!--							&lt;!&ndash; /.direct-chat-text &ndash;&gt;-->
+						<!--						</div>&lt;!&ndash; Message to the right &ndash;&gt;-->
+						<!--						<div class="direct-chat-msg right">-->
+						<!--							<div class="direct-chat-infos clearfix">-->
+						<!--								<span class="direct-chat-name float-right">You</span>-->
+						<!--								<span class="direct-chat-timestamp float-left">10:02</span>-->
+						<!--							</div>-->
+						<!--							&lt;!&ndash;							 /.direct-chat-infos&ndash;&gt;-->
+						<!--							<img class="direct-chat-img" src="static/dist/img/user3-128x128.jpg"-->
+						<!--							     alt="message user image">-->
+						<!--							&lt;!&ndash;							 /.direct-chat-img&ndash;&gt;-->
+						<!--							<div class="direct-chat-text" id="messages">-->
+
+						<!--							</div>-->
+						<!--							&lt;!&ndash; /.direct-chat-text &ndash;&gt;-->
+						<!--						</div>-->
+
+					</div>
+				</div>
+				<!-- /.card-body -->
+				<div class="card-footer">
+					<form id="f_message_input">
+						<div class="input-group">
+							<input type="text" name="message_input" id="message_input" placeholder="Nhập..."
+							       class="form-control">
+							<span class="input-group-append">
+                      <button type="submit" class="btn btn-primary">Enter</button>
+                    </span>
+						</div>
+					</form>
+				</div>
+				<!-- /.card-footer-->
+			</div>
+			<div class="card-footer">
+			</div>
+		</section>
+		<!-- right col -->
+	</div>
+
+	<!-- /.content -->
+
+</div>
+<!-- /.content-wrapper -->
+<script src="https://cdn.socket.io/3.1.3/socket.io.min.js"
+        integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh"
+        crossorigin="anonymous"></script>
+<!-- FLOT CHARTS -->
+<script src="/static/plugins/flot/jquery.flot.js"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="/static/plugins/flot-old/jquery.flot.resize.min.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="/static/plugins/flot-old/jquery.flot.pie.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>-->
+<script>
+		const socket = io.connect("http://127.0.0.1:5000");
+
+		socket.on('connect', function(){
+			socket.emit('join_room', {username:'{{ current_user.fullname }}', room:'{{ current_user.email }}'});
+
+			let message_input = document.getElementById('message_input');
+			let direct_chat_messages = document.getElementById('direct_chat_messages');
+
+
+			document.getElementById('f_message_input').onsubmit = function(e){
+				e.preventDefault();
+				direct_chat_messages.scrollTo(0,direct_chat_messages.scrollHeight); //scrolls the height of the direct_chat_messages
+				let message = message_input.value.trim();
+				socket.emit('send_message', {
+											username:'{{ current_user.fullname }}',
+											room:'{{ current_user.email }}',
+											message: message
+											});
+
+				message_input.value = '';
+
+				message_input.focus();
+
+			}
+		});
+
+		socket.on('join_room_announcement', function(data){
+			console.log(data)
+			const newNode = document.createElement('div');
+			newNode.innerHTML = `Xin chào ${data.username}, SnakeBot chúc bạn một ngày tốt lành và may mắn ! `
+			document.getElementById('messages_bot').appendChild(newNode);
+
+		});
+
+		socket.on('receive_message', function(data){
+			console.log(data)
+<!--			message user type-->
+			const direct_chat_msg_user = document.createElement('div');
+			direct_chat_msg_user.className = 'direct-chat-msg right'
+
+			const direct_chat_infos_clearfix = document.createElement('div');
+			direct_chat_infos_clearfix.className = 'direct-chat-infos clearfix'
+
+			const direct_chat_name_float_right = document.createElement('span');
+			direct_chat_name_float_right.className = 'direct-chat-name float-right'
+
+			const direct_chat_timestamp_float_left = document.createElement('span');
+			direct_chat_timestamp_float_left.className = 'direct-chat-timestamp float-left'
+
+			const direct_chat_img = document.createElement('img');
+			direct_chat_img.className = 'direct-chat-img'
+
+			const direct_chat_text = document.createElement('div');
+			direct_chat_text.className = 'direct-chat-text'
+
+			direct_chat_name_float_right.innerHTML = `Hello`;
+			direct_chat_timestamp_float_left.innerHTML = `Time`;
+			direct_chat_img.src = 'static/dist/img/user1-128x128.jpg'
+			direct_chat_text.innerHTML = `&nbsp; ${data.message}`;
+
+			direct_chat_infos_clearfix.appendChild(direct_chat_name_float_right);
+			direct_chat_infos_clearfix.appendChild(direct_chat_timestamp_float_left);
+
+			direct_chat_msg_user.appendChild(direct_chat_infos_clearfix);
+			direct_chat_msg_user.appendChild(direct_chat_img);
+			direct_chat_msg_user.appendChild(direct_chat_text);
+
+			document.getElementById('direct_chat_messages').appendChild(direct_chat_msg_user);
+
+<!--			message bot type-->
+			const direct_chat_msg_bot = document.createElement('div');
+			direct_chat_msg_bot.className = 'direct-chat-msg left'
+
+			const direct_chat_infos_clearfix_bot = document.createElement('div');
+			direct_chat_infos_clearfix_bot.className = 'direct-chat-infos clearfix'
+
+			const direct_chat_name_float_left = document.createElement('span');
+			direct_chat_name_float_left.className = 'direct-chat-name float-left'
+
+			const direct_chat_timestamp_float_right = document.createElement('span');
+			direct_chat_timestamp_float_right.className = 'direct-chat-timestamp float-right'
+
+			const direct_chat_img_bot = document.createElement('img');
+			direct_chat_img_bot.className = 'direct-chat-img'
+
+			const direct_chat_text_bot = document.createElement('div');
+			direct_chat_text_bot.className = 'direct-chat-text'
+
+			direct_chat_name_float_left.innerHTML = `Snake`;
+			direct_chat_timestamp_float_right.innerHTML = `Time`;
+			direct_chat_img_bot.src = 'static/dist/img/user3-128x128.jpg'
+			direct_chat_text_bot.innerHTML = `${data.reply}`;
+
+			direct_chat_infos_clearfix_bot.appendChild(direct_chat_name_float_left);
+			direct_chat_infos_clearfix_bot.appendChild(direct_chat_timestamp_float_right);
+
+			direct_chat_msg_bot.appendChild(direct_chat_infos_clearfix_bot);
+			direct_chat_msg_bot.appendChild(direct_chat_img_bot);
+			direct_chat_msg_bot.appendChild(direct_chat_text_bot);
+
+			document.getElementById('direct_chat_messages').appendChild(direct_chat_msg_bot);
+			document.getElementById('direct_chat_messages').scrollTo(0,direct_chat_messages.scrollHeight); //scrolls the height of the direct_chat_messages
+
+
+		});
+
+
+
+
+
+
+</script>
+
+<script>
+	var data_chart = []
+
+    function get_last_phien(tick) {
+
+
+	    Tick.helper.interval(function() {
+
+	        $.ajax({
+			        url: "/sicbomd5/predict",
+			        type: "GET",
+			        dataType: "json",
+			        success: function(resp){
+			            console.log(resp)
+			            document.getElementById('sicbomd5_phien').value = '#' + resp.last_items.id_phien
+			            document.getElementById('sicbomd5_xx123').value = ' ' + resp.last_items.xx1 + ' - ' + resp.last_items.xx2 + ' - ' + resp.last_items.xx3
+			            document.getElementById('sicbomd5_rs_number').value = resp.last_items.rs_number
+			            document.getElementById('sicbomd5_rs_str').value = resp.last_items.rs_str
+			            data_chart = resp.lst_chart
+			        },
+			        error: function(resp){
+			            console.log(resp)
+			        }
+			})
+
+	    }, 600000);
+
+
+	}
+
+
+
+
+
+
+
+</script>
+
+<script>
+  $(function () {
+    /*
+     * Flot Interactive Chart
+     * -----------------------
+     */
+    // We use an inline data source in the example, usually data would
+    // be fetched from a server
+
+
+
+    function getRandomData2() {
+
+
+
+      // Do a random walk
+      while (data.length < totalPoints) {
+
+        var prev = data.length > 0 ? data[data.length - 1] : 50,
+            y    = prev + Math.random() * 10 - 5
+
+        if (y < 0) {
+          y = 0
+        } else if (y > 100) {
+          y = 100
+        }
+
+        data.push(y)
+      }
+
+      // Zip the generated y values with the x values
+      var res = []
+      for (var i = 0; i < data.length; ++i) {
+        res.push([i, data[i]])
+      }
+
+      return res
+    }
+
+    function getRandomData() {
+        console.log(data_chart)
+        return data_chart
+    }
+
+    var interactive_plot = $.plot('#interactive', [
+        {
+          data: getRandomData(),
+        }
+      ],
+      {
+        grid: {
+          borderColor: '#f5f3f3',
+          borderWidth: 1,
+          tickColor: '#g5f3f3'
+        },
+        series: {
+          color: '#3c8dbc',
+          lines: {
+            lineWidth: 3,
+            show: true,
+            fill: true,
+          },
+        },
+        yaxis: {
+          min: 3,
+          max: 18,
+          show: true
+        },
+        xaxis: {
+          show: true
+        }
+      }
+    )
+
+    var updateInterval = 20000 //Fetch data ever x milliseconds
+    var realtime       = 'on' //If == to on then fetch data every x seconds. else stop fetching
+    function update() {
+
+      interactive_plot.setData([getRandomData()])
+
+      // Since the axes don't change, we don't need to call plot.setupGrid()
+      interactive_plot.draw()
+      if (realtime === 'on') {
+        setTimeout(update, updateInterval)
+      }
+    }
+
+    //INITIALIZE REALTIME DATA FETCHING
+    if (realtime === 'on') {
+      update()
+    }
+    //REALTIME TOGGLE
+    $('#realtime .btn').click(function () {
+      if ($(this).data('toggle') === 'on') {
+        realtime = 'on'
+      }
+      else {
+        realtime = 'off'
+      }
+      update()
+    })
+    /*
+     * END INTERACTIVE CHART
+     */
+
+
+    /*
+     * LINE CHART
+     * ----------
+     */
+    //LINE randomly generated data
+
+    var sin = [],
+        cos = []
+    for (var i = 0; i < 14; i += 0.5) {
+      sin.push([i, Math.sin(i)])
+      cos.push([i, Math.cos(i)])
+    }
+    var line_data1 = {
+      data : sin,
+      color: '#3c8dbc'
+    }
+    var line_data2 = {
+      data : cos,
+      color: '#00c0ef'
+    }
+    $.plot('#line-chart', [line_data1, line_data2], {
+      grid  : {
+        hoverable  : true,
+        borderColor: '#f3f3f3',
+        borderWidth: 1,
+        tickColor  : '#f3f3f3'
+      },
+      series: {
+        shadowSize: 0,
+        lines     : {
+          show: true
+        },
+        points    : {
+          show: true
+        }
+      },
+      lines : {
+        fill : false,
+        color: ['#3c8dbc', '#f56954']
+      },
+      yaxis : {
+        show: true
+      },
+      xaxis : {
+        show: true
+      }
+    })
+    //Initialize tooltip on hover
+    $('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
+      position: 'absolute',
+      display : 'none',
+      opacity : 0.8
+    }).appendTo('body')
+    $('#line-chart').bind('plothover', function (event, pos, item) {
+
+      if (item) {
+        var x = item.datapoint[0].toFixed(2),
+            y = item.datapoint[1].toFixed(2)
+
+        $('#line-chart-tooltip').html(item.series.label + ' of ' + x + ' = ' + y)
+          .css({
+            top : item.pageY + 5,
+            left: item.pageX + 5
+          })
+          .fadeIn(200)
+      } else {
+        $('#line-chart-tooltip').hide()
+      }
+
+    })
+    /* END LINE CHART */
+
+    /*
+     * FULL WIDTH STATIC AREA CHART
+     * -----------------
+     */
+    var areaData = [[2, 88.0], [3, 93.3], [4, 102.0], [5, 108.5], [6, 115.7], [7, 115.6],
+      [8, 124.6], [9, 130.3], [10, 134.3], [11, 141.4], [12, 146.5], [13, 151.7], [14, 159.9],
+      [15, 165.4], [16, 167.8], [17, 168.7], [18, 169.5], [19, 168.0]]
+    $.plot('#area-chart', [areaData], {
+      grid  : {
+        borderWidth: 0
+      },
+      series: {
+        shadowSize: 0, // Drawing is faster without shadows
+        color     : '#00c0ef',
+        lines : {
+          fill: true //Converts the line chart to area chart
+        },
+      },
+      yaxis : {
+        show: false
+      },
+      xaxis : {
+        show: false
+      }
+    })
+
+    /* END AREA CHART */
+
+    /*
+     * BAR CHART
+     * ---------
+     */
+
+    var bar_data = {
+      data : [[1,10], [2,8], [3,4], [4,13], [5,17], [6,9]],
+      bars: { show: true }
+    }
+    $.plot('#bar-chart', [bar_data], {
+      grid  : {
+        borderWidth: 1,
+        borderColor: '#f3f3f3',
+        tickColor  : '#f3f3f3'
+      },
+      series: {
+         bars: {
+          show: true, barWidth: 0.5, align: 'center',
+        },
+      },
+      colors: ['#3c8dbc'],
+      xaxis : {
+        ticks: [[1,'January'], [2,'February'], [3,'March'], [4,'April'], [5,'May'], [6,'June']]
+      }
+    })
+    /* END BAR CHART */
+
+    /*
+     * DONUT CHART
+     * -----------
+     */
+
+    var donutData = [
+      {
+        label: 'Series2',
+        data : 30,
+        color: '#3c8dbc'
+      },
+      {
+        label: 'Series3',
+        data : 20,
+        color: '#0073b7'
+      },
+      {
+        label: 'Series4',
+        data : 50,
+        color: '#00c0ef'
+      }
+    ]
+    $.plot('#donut-chart', donutData, {
+      series: {
+        pie: {
+          show       : true,
+          radius     : 1,
+          innerRadius: 0.5,
+          label      : {
+            show     : true,
+            radius   : 2 / 3,
+            formatter: labelFormatter,
+            threshold: 0.1
+          }
+
+        }
+      },
+      legend: {
+        show: false
+      }
+    })
+    /*
+     * END DONUT CHART
+     */
+
+  })
+
+  /*
+   * Custom Label formatter
+   * ----------------------
+   */
+  function labelFormatter(label, series) {
+    return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+      + label
+      + '<br>'
+      + Math.round(series.percent) + '%</div>'
+  }
+
+
+
+
+</script>
