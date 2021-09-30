@@ -28,8 +28,9 @@ def get_db():
             # password="abcd1234",
             maxPoolSize=50,  # Set the maximum connection pool size to 50 active connections.
             w='majority',  # Set the write timeout limit to 2500 milliseconds.
-            wtimeout=2500,
-            ssl_ca_certs=certifi.where()
+            wtimeout=2500
+            # ,
+            # ssl_ca_certs=certifi.where()
         )[APP_DB_NAME]
     return db
 
