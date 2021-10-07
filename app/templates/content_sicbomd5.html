@@ -62,16 +62,18 @@
 
 
 						</form>
-						<div class="card-footer">
-							<span class="input-group-append">
-                                <button type="submit" onclick="predict_sicbomd5_v1()" class="btn btn-primary">Dự đoán 1</button>
-                            </span>
+
+						<div>
+							<figure class="highcharts-figure">
+								<div id="container"></div>
+								<!--								<p class="highcharts-description">-->
+								<!--									Basic line chart showing trends in a dataset. This chart includes the-->
+								<!--									<code>series-label</code> module, which adds a label to each line for-->
+								<!--									enhanced readability.-->
+								<!--								</p>-->
+							</figure>
 						</div>
-						<div class="card-footer">
-							<span class="input-group-append">
-                                <button type="submit" onclick="predict_sicbomd5_v2()" class="btn btn-primary">Dự đoán 2</button>
-                            </span>
-						</div>
+
 
 					</div>
 
@@ -82,6 +84,17 @@
 					</div>
 				</div>
 				<!-- /.card-body -->
+
+				<div class="card-footer" style="display:flex">
+					<span class="input-group-append">
+                        <button type="submit" onclick="predict_sicbomd5_v1()"
+                                class="btn btn-primary">Dự đoán 1</button>
+                    </span>
+					<span class="input-group-append" style="margin-left: 20px">
+                        <button type="submit" onclick="predict_sicbomd5_v2()"
+                                class="btn btn-primary">Dự đoán 2</button>
+                    </span>
+				</div>
 
 			</div>
 
@@ -97,17 +110,17 @@
 					<h3 class="card-title"></h3>
 
 					<div class="card-tools">
-						<span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>
+						<!--						<span data-toggle="tooltip" title="3 New Messages" class="badge badge-primary">3</span>-->
 						<button type="button" class="btn btn-tool" data-card-widget="collapse">
 							<i class="fas fa-minus"></i>
 						</button>
-						<button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts"
-						        data-widget="chat-pane-toggle">
-							<i class="fas fa-comments"></i>
-						</button>
-						<button type="button" class="btn btn-tool" data-card-widget="remove"><i
-								class="fas fa-times"></i>
-						</button>
+						<!--						<button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts"-->
+						<!--						        data-widget="chat-pane-toggle">-->
+						<!--							<i class="fas fa-comments"></i>-->
+						<!--						</button>-->
+						<!--						<button type="button" class="btn btn-tool" data-card-widget="remove"><i-->
+						<!--								class="fas fa-times"></i>-->
+						<!--						</button>-->
 					</div>
 				</div>
 				<!-- /.card-header -->
@@ -121,7 +134,7 @@
 								<span class="direct-chat-timestamp float-right">time</span>
 							</div>
 							<!-- /.direct-chat-infos -->
-							<img class="direct-chat-img" src="static/dist/img/user1-128x128.jpg"
+							<img class="direct-chat-img" src="static/dist/img/bot_2.jpg"
 							     alt="message user image">
 							<!-- /.direct-chat-img -->
 							<div class="direct-chat-text" id="messages_bot"></div>
@@ -173,9 +186,9 @@
 					</form>
 				</div>
 				<!-- /.card-footer-->
+
 			</div>
-			<div class="card-footer">
-			</div>
+
 		</section>
 		<!-- right col -->
 	</div>
@@ -194,7 +207,13 @@
 <!--&lt;!&ndash; FLOT PIE PLUGIN - also used to draw donut charts &ndash;&gt;-->
 <!--<script src="/static/plugins/flot-old/jquery.flot.pie.min.js"></script>-->
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>-->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script>
+
 		const socket = io.connect("http://127.0.0.1:5000");
 
 		socket.on('connect', function(){
@@ -252,7 +271,7 @@
 
 			direct_chat_name_float_right.innerHTML = `Hello`;
 			direct_chat_timestamp_float_left.innerHTML = `Time`;
-			direct_chat_img.src = 'static/dist/img/user1-128x128.jpg'
+			direct_chat_img.src = 'static/dist/img/user_1.png'
 			direct_chat_text.innerHTML = `&nbsp; ${data.message}`;
 
 			direct_chat_infos_clearfix.appendChild(direct_chat_name_float_right);
@@ -285,7 +304,7 @@
 
 			direct_chat_name_float_left.innerHTML = `Snake`;
 			direct_chat_timestamp_float_right.innerHTML = `Time`;
-			direct_chat_img_bot.src = 'static/dist/img/user3-128x128.jpg'
+			direct_chat_img_bot.src = 'static/dist/img/bot_2.jpg'
 			direct_chat_text_bot.innerHTML = `${data.reply}`;
 
 			direct_chat_infos_clearfix_bot.appendChild(direct_chat_name_float_left);
@@ -301,10 +320,15 @@
 
 		});
 
+
+
+
+
 </script>
 
 <script>
-<!--	var data_chart = []-->
+	var chart_id_phien = []
+	var chart_rs_number = []
 
     function get_last_phien(tick) {
 
@@ -321,7 +345,70 @@
 			            document.getElementById('sicbomd5_xx123').value = ' ' + resp.last_items.xx1 + ' - ' + resp.last_items.xx2 + ' - ' + resp.last_items.xx3
 			            document.getElementById('sicbomd5_rs_number').value = resp.last_items.rs_number
 			            document.getElementById('sicbomd5_rs_str').value = resp.last_items.rs_str
-<!--			            data_chart = resp.lst_chart-->
+			            chart_id_phien = resp.chart_id_phien
+			            chart_rs_number = resp.chart_rs_number
+
+						Highcharts.chart('container', {
+
+					    title: {
+					        text: 'Thống kê 50 phiên hiện tại'
+					    },
+
+					    subtitle: {
+					        text: 'Source: thesolarfoundation.com'
+					    },
+
+					    yAxis: {
+					        title: {
+					            text: 'điểm'
+					        }
+					    },
+
+					    xAxis: {
+					        accessibility: {
+					            rangeDescription: chart_id_phien
+					        },
+					        title: {
+					            text: 'mã phiên'
+					        }
+					    },
+
+					    legend: {
+					        layout: 'vertical',
+					        align: 'right',
+					        verticalAlign: 'middle'
+					    },
+
+					    plotOptions: {
+					        series: {
+					            label: {
+					                connectorAllowed: false
+					            },
+					            pointStart: chart_id_phien[0]
+					        }
+					    },
+
+					    series: [{
+					        name: 'SicboMD5',
+					        data: chart_rs_number
+					    }],
+
+					    responsive: {
+					        rules: [{
+					            condition: {
+					                maxWidth: 500
+					            },
+					            chartOptions: {
+					                legend: {
+					                    layout: 'horizontal',
+					                    align: 'center',
+					                    verticalAlign: 'bottom'
+					                }
+					            }
+					        }]
+					    }
+
+					});
 			        },
 			        error: function(resp){
 			            console.log(resp)
@@ -331,6 +418,10 @@
 	    }, 30000);
 
 	};
+
+
+
+
 
 
 </script>
@@ -364,7 +455,7 @@
 
 					direct_chat_name_float_left.innerHTML = `Snake`;
 					direct_chat_timestamp_float_right.innerHTML = `Time`;
-					direct_chat_img_bot.src = 'static/dist/img/user3-128x128.jpg'
+					direct_chat_img_bot.src = 'static/dist/img/bot_2.jpg'
 					direct_chat_text_bot.innerHTML = resp.msg;
 
 					direct_chat_infos_clearfix_bot.appendChild(direct_chat_name_float_left);
@@ -413,7 +504,7 @@
 
 					direct_chat_name_float_left.innerHTML = `Snake`;
 					direct_chat_timestamp_float_right.innerHTML = `Time`;
-					direct_chat_img_bot.src = 'static/dist/img/user3-128x128.jpg'
+					direct_chat_img_bot.src = 'static/dist/img/bot_2.jpg'
 					direct_chat_text_bot.innerHTML = resp.msg;
 
 					direct_chat_infos_clearfix_bot.appendChild(direct_chat_name_float_left);
@@ -433,4 +524,8 @@
 		})
 
 	};
+
+
+
+
 </script>

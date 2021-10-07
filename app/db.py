@@ -62,18 +62,22 @@ def get_lastid():
     uri = "https://api-go-88-somjv.ondigitalocean.app/go88/"
 
     try:
+        chart_id_phien = []
+        chart_rs_number = []
         # resp = requests.get(uri)
         # if resp.status_code != 200:
         #     msg = '{}'.format(resp.status_code)
-        data = json.loads(json_util.dumps((db.sicbomd5.aggregate([{"$sort": {"_id": -1}}, {"$limit": 1}]))))
+        data = json.loads(json_util.dumps((db.sicbomd5.aggregate([{"$sort": {"_id": -1}}, {"$limit": 50}]))))
 
-        items['last_items'] = data[0] if data else []
-        # items['total_items'] = data
-        # lst_chart = []
-        # for i in items['total_items']:
-        #     lst_chart.append([int(i['id_phien']), i['rs_number']])
-        # items['lst_chart'] = lst_chart
-        # print(items)
+        if data:
+            items['last_items'] = data[0]
+            for i in data:
+                chart_id_phien.append(int(i['id_phien']))
+                chart_rs_number.append(int(i['rs_number']))
+            chart_id_phien.reverse()
+            chart_rs_number.reverse()
+            items['chart_id_phien'] = chart_id_phien
+            items['chart_rs_number'] = chart_rs_number
 
         msg = 'get done'
         result = '1'

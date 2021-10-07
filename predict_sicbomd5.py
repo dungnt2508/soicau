@@ -106,11 +106,29 @@ def write_csv(year, month, day):
 
 def last_id_phien_get():
     """ get data cuoi cung"""
-    data = list(db.sicbomd5.aggregate([{"$sort": {"_id": -1}}, {"$limit": 3}]))
-    print(data)
-    lst_cur_dice = [min_max_normalize(data[0]["xx1"]), min_max_normalize(data[0]["xx2"]), min_max_normalize(data[0]["xx3"])]
-    lst_last_dice = [min_max_normalize(data[1]["xx1"]), min_max_normalize(data[1]["xx2"]), min_max_normalize(data[1]["xx3"])]
-    lst_last_dice_2 = [min_max_normalize(data[2]["xx1"]), min_max_normalize(data[2]["xx2"]), min_max_normalize(data[2]["xx3"])]
+    # data = list(db.sicbomd5.aggregate([{"$sort": {"_id": -1}}, {"$limit": 3}]))
+    # print(data)
+    # cur_xx1 = data[0]["xx1"]
+    # cur_xx2 = data[0]["xx2"]
+    # cur_xx3 = data[0]["xx3"]
+    # last_xx1 = data[1]["xx1"]
+    # last_xx2 = data[1]["xx2"]
+    # last_xx3 = data[1]["xx3"]
+    # last2_xx1 = data[2]["xx1"]
+    # last2_xx2 = data[2]["xx2"]
+    # last2_xx3 = data[2]["xx3"]
+    cur_xx1 = 6
+    cur_xx2 = 6
+    cur_xx3 = 3
+    last_xx1 = 6
+    last_xx2 = 6
+    last_xx3 = 3
+    last2_xx1 = 2
+    last2_xx2 = 3
+    last2_xx3 = 5
+    lst_cur_dice = [min_max_normalize(cur_xx1), min_max_normalize(cur_xx2), min_max_normalize(cur_xx3)]
+    lst_last_dice = [min_max_normalize(last_xx1), min_max_normalize(last_xx2), min_max_normalize(last_xx3)]
+    lst_last_dice_2 = [min_max_normalize(last2_xx1), min_max_normalize(last2_xx2), min_max_normalize(last2_xx3)]
 
     return {"lst_cur_dice": lst_cur_dice, "lst_last_dice": lst_last_dice, "lst_last_dice_2": lst_last_dice_2}
 
@@ -118,7 +136,7 @@ def last_id_phien_get():
 # write_csv()
 
 def sicbomd5_predict():
-    data = pd.read_csv('sicbomd5_2102021.csv')  # read csv file
+    data = pd.read_csv('sicbomd5_3102021.csv')  # read csv file
 
     features = data[[
         'xx1_current', 'xx2_current', 'xx3_current',
@@ -161,6 +179,11 @@ def sicbomd5_predict():
 
 
 
-write_csv(year=2021, month=10, day=3)
+# write_csv(year=2021, month=10, day=3)
 # print(last_id_phien_get())
 # sicbomd5_predict()
+
+
+a = [7,6,5,4,3,2,1]
+a.sort()
+print(a)
