@@ -16,8 +16,7 @@ def create_app():
     app.app_context().push()
     app.wsgi_app = ProxyFix(app.wsgi_app)
     app.config['SECRET_KEY'] = 'dungnt2200'
-    app.config[
-        'APP_DB_URI'] = 'mongodb+srv://dungnt196:25Tuananh08@1stcluster17032020.dabsg.azure.mongodb.net/test?retryWrites=true&w=majority'
+    app.config['APP_DB_URI'] = 'mongodb+srv://dungnt196:25Tuananh08@1stcluster17032020.dabsg.azure.mongodb.net/test?retryWrites=true&w=majority'
     app.config['APP_NS'] = 'snake_bot'
     app.config['SESSION_TYPE'] = 'mongodb'
 

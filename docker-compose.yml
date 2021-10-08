@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  soicau:
+    image: registry.taimh.xyz/soicau
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # ports:
+    #   - "5000:5000"
+    # volumes:
+    #   # - .:/usr/src/app/
+    #   - type: bind
+    #     source: ./
+    #     target: /usr/src/app/
+  deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.soicau.rule=Host(`soicau.dung.vn`)"
+        - "traefik.http.routers.soicau.entrypoints=web"
+        - "traefik.http.services.soicau.loadbalancer.server.port=5000"
+    networks:
+      - traefik-swarm
+
+networks:
+  traefik-swarm:
+    external: true
