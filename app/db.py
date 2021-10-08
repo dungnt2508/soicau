@@ -24,7 +24,11 @@ def get_db():
     """
     Configuration method to return db instance
     """
+    print('----------------')
+    print(current_app.config["APP_DB_URI"])
+    print('----------------')
     db = getattr(g, "_database", None)
+
     APP_DB_URI = current_app.config["APP_DB_URI"]
     APP_DB_NAME = current_app.config["APP_NS"]
     if db is None:
@@ -33,7 +37,7 @@ def get_db():
             # username="root",
             # password="abcd1234",
             maxPoolSize=50,  # Set the maximum connection pool size to 50 active connections.
-            w='majority',  # Set the write timeout limit to 2500 milliseconds.
+            w='majority',  # Set the write timeout limt to 2500 milliseconds.
             wtimeout=2500
             # ,
             # ssl_ca_certs=certifi.where()
@@ -42,8 +46,10 @@ def get_db():
 
 
 # Use LocalProxy to read the global db instance with just `db`
-db = LocalProxy(get_db)
+print('db----------------')
 
+db = LocalProxy(get_db)
+print('db a----------------')
 
 def get_user(email):
     if "google_id" in session:
