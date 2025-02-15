@@ -30,8 +30,8 @@ def lastid_get():
 @bp.route('/sicbomd5/predict')
 # @login_required
 def predict_sicbomd5_get():
+    print('zo')
     return get_predict_sicbomd5(1)
-
 
 @bp.route('/sicbomd5/predict_v2')
 # @login_required

@@ -38,7 +38,7 @@ def get_db():
             # password="abcd1234",
             maxPoolSize=50,  # Set the maximum connection pool size to 50 active connections.
             w='majority',  # Set the write timeout limt to 2500 milliseconds.
-            wtimeout=2500
+            wtimeoutms=2500
             # ,
             # ssl_ca_certs=certifi.where()
         )[APP_DB_NAME]
@@ -46,10 +46,8 @@ def get_db():
 
 
 # Use LocalProxy to read the global db instance with just `db`
-print('db----------------')
-
 db = LocalProxy(get_db)
-print('db a----------------')
+
 
 def get_user(email):
     if "google_id" in session:
@@ -95,6 +93,7 @@ def get_lastid():
 
 
 def get_predict_sicbomd5(type):
+    print('zo')
     result, msg, items = ('0', None, {})
     uri = "https://api-go-88-somjv.ondigitalocean.app/go88/"
     data = None

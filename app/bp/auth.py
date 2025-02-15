@@ -112,7 +112,7 @@ def signup_post():
         flash('Email đã tồn tại !')
         return redirect(url_for('bp.signup'))
 
-    new_user = {'email': email, 'fullname': fullname, 'password': generate_password_hash(password, method='sha256')}
+    new_user = {'email': email, 'fullname': fullname, 'password': generate_password_hash(password, method='pbkdf2:sha256')}
 
     save_user(new_user)
 
